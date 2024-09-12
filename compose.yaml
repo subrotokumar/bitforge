@@ -1,0 +1,25 @@
+version: "4.0"
+
+services:
+  consul:
+    image: hashicorp/consul
+    ports:
+      - 8500:8500
+    networks:
+      - bitforge-network
+
+  # postgres:
+  #   image: postgres:alpine
+  #   environment:
+  #     - POSTGRES_DB=bitforge
+  #     - POSTGRES_USER=bitforge
+  #     - POSTGRES_PASSWORD=P@ssw0rd
+  #   healthcheck:
+  #     test: ["CMD", "pg_isready"]
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - bitforge-network
+
+networks:
+  bitforge-network:

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/subrotokumar/bitforge/proto/gen";
+
+service AccountService {
+    rpc HealthCheck(Empty) returns (HealthCheckResponse){}
+    rpc CreateAccount(CreateAccountRequest) returns (CreateAccountRequest){}
+}
+
+message Empty {}
+
+message HealthCheckResponse {
+    string status = 1;
+}
+
+message CreateAccountRequest {
+    string email = 1;
+}
