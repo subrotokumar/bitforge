@@ -1,14 +1,26 @@
-version: "4.0"
-
 services:
-  consul:
-    image: hashicorp/consul
-    ports:
-      - 8500:8500
-    networks:
-      - bitforge-network
+  # consul:
+  #   container_name: bitforge-consul
+  #   image: hashicorp/consul
+  #   ports:
+  #     - 8500:8500
+  #   networks:
+  #     - bitforge-network
+
+  # rabbitmq:
+  #   container_name: bitforge-rabbitmq
+  #   image: rabbitmq:3-management
+  #   ports:
+  #     - 5672:5672
+  #     - 15672:15672
+  #   environment:
+  #     - RABBITMQ_DEFAULT_USER=bitforge
+  #     - RABBITMQ_DEFAULT_PASS=password
+  #   networks:
+  #     - bitforge
 
   # postgres:
+  #   container_name: bitforge-postgres
   #   image: postgres:alpine
   #   environment:
   #     - POSTGRES_DB=bitforge
@@ -20,6 +32,16 @@ services:
   #     - "5432:5432"
   #   networks:
   #     - bitforge-network
+
+  account:
+    container_name: bitforge-account-srv
+    ports:
+      - 8001:8001
+    build:
+      context: account
+      dockerfile: dockerfile
+    volumes:
+      - "./account:/app"
 
 networks:
   bitforge-network:

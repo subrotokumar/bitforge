@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/subrotokumar/bitforge/proto/gen";
+
+message Empty {}
+
+enum HealthStatus {
+    unknown = 0;
+    healthy = 1;
+    unhealthy = 2;
+}
+
+message HealthCheckComponent {
+    HealthStatus database = 1;
+    HealthStatus cache = 2;
+    HealthStatus external_api = 3;
+}
+
+message HealthCheckResponse {
+    string service = 1;
+    HealthStatus status = 2;
+    HealthCheckComponent component = 3;
+    string uptime = 4;
+    google.protobuf.Timestamp timestamp = 5;
+}

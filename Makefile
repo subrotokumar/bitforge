@@ -2,8 +2,8 @@ vault-file=passkey
 
 proto-gen:
 	@rm -rf pb/*
-	@protoc --proto_path=proto --go_out=proto/gen --go_opt=paths=source_relative \
-	--go-grpc_out=proto/gen --go-grpc_opt=paths=source_relative \
+	@protoc --proto_path=proto --go_out=pkg/pb --go_opt=paths=source_relative \
+	--go-grpc_out=pkg/db --go-grpc_opt=paths=source_relative \
 	proto/*.proto
 
 husky:
